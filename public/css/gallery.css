@@ -1,0 +1,154 @@
+/* 
+ * Media Gllery
+ */
+
+ .gal-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+ }
+ .gal-menu li {
+  display: inline;
+ }
+ .bt-link {
+ 	background: none;
+	border: none;
+	font-size: .85em;
+	color: #9da5b7;
+ }
+
+ .bt-link:hover {
+	color: #6b7794;
+ }
+.div-bt-link {
+	display: inline-block;
+}
+
+//-------------------->
+
+.overlay-container:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.thum-links {
+	position: absolute;
+	top: 0;
+	z-index: 10;
+	bottom: 0px;
+	left: 0;
+	right: 0px;
+	overflow: hidden;
+	opacity: 0;
+}
+
+
+.thum-links:hover {
+	background-color: rgba(30, 30, 30, 0.5);
+	opacity: 1;
+}
+.thum-links i {
+    margin-top: 35%;
+    color: #ccc;
+    font-size: 2em; 
+}
+
+.thum-links i:hover {
+    color: #d83725;
+    
+}
+
+.thumb-cont {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	overflow: hidden;
+
+}
+
+.thumb-info {
+	position: absolute;
+	top: auto;
+	z-index: 12;
+	bottom: 4px;
+	left: 4px;
+	right: 4px;
+	color: #333;
+	opacity: 0;
+	background-color:#e8e8e8;
+	overflow: hidden;
+	-webkit-transition: .7s;
+	transition: .7s;
+	transition-timing-function: ease-in-out;
+}
+.thumb-info:hover {
+	opacity: 1;
+}
+
+.thumb-info p {
+	text-align: left;
+}
+
+.btn-del {
+	position: absolute;
+	top: auto;
+	z-index: 13;
+	bottom: 0px;
+	right: 0px;
+	color: #dd4b39;
+	-webkit-transition: .7s;
+	transition: .7s;
+	transition-timing-function: ease-in-out;
+	background-color: #dd4b39;
+}
+
+
+
+.vid-links {
+	position: absolute;
+	top: 0;
+	z-index: 10;
+	bottom: 0px;
+	left: 0;
+	right: 0px;
+	overflow: hidden;
+	opacity: 1;
+	background-color: rgba(252, 240, 239, 0.2);
+}
+
+.vid-links i {
+    margin-top: 35% ;
+    margin-bottom: 35%;
+    vertical-align: middle;
+
+    color: #dd4b39;
+    font-size: 2em; 
+}
+
+.vid-links i:hover {
+    color: #c83322;
+}
+
+.vid-info {
+	position: absolute;
+	top: auto;
+	z-index: 12;
+	bottom: 4px;
+	left: 4px;
+	right: 4px;
+	opacity: 0;
+	background-color: rgba(30, 30, 30, 0.5);
+	color:#e8e8e8;
+	overflow: hidden;
+	-webkit-transition: .7s;
+	transition: .7s;
+	transition-timing-function: ease-in-out;
+}
+.vid-info:hover {
+	opacity: 1;
+}
+
+.vid-info p {
+	text-align: left;
+}

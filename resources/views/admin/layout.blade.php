@@ -37,6 +37,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href='//fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
     
     <link href="{{ asset('public/plugins/sweetalert/sweetalert.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/css/gallery.css')}}" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -197,6 +198,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li><!-- ./Links -->
             
             <!-- Links -->
+            <li @if(Request::is('panel/admin/gallery/*')) class="active" @endif>
+              <a href="{{ url('panel/admin/gallery') }}"><i class="fa fa-object-group"></i> <span>{{ trans('admin.gallery') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+               <li @if(Request::is('panel/admin/gallery/photos*')) class="active" @endif><a href="{{ route('photos.index') }}"><i class="fa fa-picture-o"></i> {{ trans('admin.photo') }}</a></li>
+               <li @if(Request::is('panel/admin/gallery/audios*')) class="active" @endif><a href="{{ route('audios.index') }}"><i class="fa fa-music"></i> {{ trans('admin.audio') }}</a></li>
+               <li @if(Request::is('panel/admin/gallery/videos*')) class="active" @endif><a href="{{ route('videos.index') }}"><i class="fa fa-youtube-play"></i> {{ trans('admin.video') }}</a></li>
+             </ul>
+            </li><!-- ./Links -->
+            
+            <!-- Links -->
             <li @if(Request::is('panel/admin/withdrawals')) class="active" @endif>
             	<a href="{{ url('panel/admin/withdrawals') }}"><i class="fa fa-university"></i> <span>{{ trans('misc.withdrawals') }}</span></a>
             </li><!-- ./Links -->
@@ -225,7 +236,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li @if(Request::is('panel/admin/profiles-social')) class="active" @endif>
             	<a href="{{ url('panel/admin/profiles-social') }}"><i class="fa fa-share-alt"></i> <span>{{ trans('admin.profiles_social') }}</span></a>
             </li><!-- ./Links -->
-            
+
             <!-- Links -->
            <!-- <li @if(Request::is('panel/admin/messages')) class="active" @endif>
             	<a href="{{ url('panel/admin/messages') }}"><i class="fa fa-envelope"></i> <span>{{ trans('users.messages') }}</span></a>

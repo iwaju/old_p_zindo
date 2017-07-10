@@ -147,6 +147,10 @@ return array(
 	'normal_user' => '(It can only publish campaigns)',
 	'currency_code' => 'Currency Code',
 	'show_navbar' => 'Show Navbar',
+	'gallery'     => 'Gallery',
+	'photo'       => 'Photos',
+	'audio'       => 'Audios',
+	'video'       => 'Videos'
 
     
 	
