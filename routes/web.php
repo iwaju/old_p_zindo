@@ -246,6 +246,35 @@ Route::group(['middleware' => 'role'], function() {
 	// Campaigns Reported
 	Route::get('panel/admin/campaigns/reported','AdminController@reportedCampaigns');
 	Route::post('panel/admin/campaigns/reported/delete','AdminController@reportedDeleteCampaigns');
+
+	/**
+	 * Media Gallery
+	 **
+	 */
+
+	Route::group(['prefix'=>'panel/admin/gallery'], function () {
+
+		
+		// Medias Album
+        
+		Route::resource('/albums','MediaAlbumController');
+
+		// Photos Gallery 
+
+		Route::get('/photos/album/{id}','ImageGalleryController@album')->name('photos-albums');
+		Route::resource('/photos','ImageGalleryController');
+
+		// Videos Gallery
+
+		Route::get('/videos/album/{id}','VideoGalleryController@album')->name('videos-albums');
+		Route::resource('/videos','VideoGalleryController');
+
+		// Audios Gallery
+
+		Route::get('/audios/album/{id}','AudioGalleryController@album')->name('audios-albums');
+		Route::resource('/audios','AudioGalleryController');
+	});
+
 	
 });
 
@@ -317,4 +346,11 @@ Route::get('c/{id}/widget/show', function($id){
 	$response = App\Models\Campaigns::where('id',$id)->where('status','active')->firstOrFail();
 	return view('includes.embed')->withResponse($response);	
 });
+
+/* 
+ |
+ |------------------------
+ | Media Gallery
+ |--------- --------------
+ */
 

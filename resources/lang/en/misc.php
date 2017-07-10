@@ -291,5 +291,31 @@ return array(
 	'already_sent_report'  => 'Already sent an report',
 	'thanks'  =>  'Thanks!',
 	'campaigns_reported' => 'Campaigns Reported',
-			
+
+	//<------------ Gallery --------------->>	
+	'photo_album'          => 'Photo album',	
+	'create_photo_album'   => 'New photo album',
+	'folder_image'         => 'Folder image',
+	'new_photo_album'      => 'New photo album',
+	'photo_album' 		   => 'Photo album',
+	'photo_albums' 		   => 'Photo albums',
+	'add_image'			   => 'Add an image',
+	'new_album'            => 'New album',
+	'gallery_upload'       => 'Upload',
+	'select_album'         => 'Select an album',
+	'empty_select_album'   => 'Please select an Album to display its content',
+	'back_to_album'        => 'Back to albums',
+	'empty_album'          => 'Empty Album',
+	'move_photo'           => 'Move photo',
+	'video_gallery'        => 'Video gallery',
+	'new_video'            => 'New video',
+	'add_audio'            => 'Add an audio file',
+	'select_video'         => 'Select a video',
+	'select_audio'         => 'Select an audio file',
+	'select_thumbnail'     => 'Select a thumbnail',
+	'video_album'          => 'Video album',
+	'video_albums'          => 'Video albums',
+	'gallery'              => 'Gallery',
+	'audio_album'		   => 'Audio album',
+
 );
