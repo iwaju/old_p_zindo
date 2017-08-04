@@ -60,6 +60,7 @@
                       <label class="col-sm-2 control-label">{{ trans('admin.description') }}</label>
                       <div class="col-sm-10">
                         <textarea value="{{ old('description') }}" name="description" class="form-control" placeholder="{{ trans('admin.description') }}"></textarea>
+
                       </div>
                     </div>
 

@@ -97,7 +97,6 @@ class MediaAlbumController extends Controller
         $media_type = $data->type;
         
         return view('admin.media.album.edit', compact('data','media_type'));
-
     }
 
     /**
@@ -109,7 +108,6 @@ class MediaAlbumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $validator = Validator::make($request->All(), [
             'name' => 'required',
             'description' => 'required',

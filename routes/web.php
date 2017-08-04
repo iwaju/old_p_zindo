@@ -302,7 +302,7 @@ Route::group(['middleware' => 'role'], function() {
 		Route::get('/audios/album/{id}','AudioGalleryController@album')->name('audios-albums');
 		Route::resource('/audios','AudioGalleryController');
 	});
-
+  
 	/**
 	 ** Front End Media Gallery
 	 **
@@ -418,4 +418,11 @@ Route::get('c/{id}/widget/show', function($id){
 	$response = App\Models\Campaigns::where('id',$id)->where('status','active')->firstOrFail();
 	return view('includes.embed')->withResponse($response);	
 });
+
+/* 
+ |
+ |------------------------
+ | Media Gallery
+ |--------- --------------
+ */
 

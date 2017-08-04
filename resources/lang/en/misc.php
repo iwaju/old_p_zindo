@@ -309,6 +309,7 @@ return array(
 	'video_albums' 		   => 'Video albums',
 	'add_image'			   => 'Add an image',
 	'add_video'			   => 'Add a video',
+
 	'new_album'            => 'New album',
 	'gallery_upload'       => 'Upload',
 	'select_album'         => 'Select an album',
@@ -317,6 +318,7 @@ return array(
 	'empty_album'          => 'Empty Album',
 	'move_photo'           => 'Move photo',
 	'video_album'          => 'Video album',
+
 	'new_video'            => 'New video',
 	'add_audio'            => 'Add an audio file',
 	'select_video'         => 'Select a video',
@@ -356,4 +358,5 @@ return array(
     'project_deleted'      => 'Project deleted successfully',
     'project_validated'    => 'Project validated successfully',
     'project_details'      => 'Project details',
+
 );

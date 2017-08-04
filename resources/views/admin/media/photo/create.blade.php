@@ -25,7 +25,6 @@
 
                   <div class="pull-right box-tools">
                     <ul class="gal-menu">
-                      
                       <li>
                         <a href="{{route('photos-albums', ['id'=>$album_id])}}" class="btn bt-link">
                           <i class="fa fa-arrow-left"> </i>

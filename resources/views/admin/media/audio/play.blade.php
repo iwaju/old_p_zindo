@@ -64,7 +64,6 @@
                       <form method="POST" action="{{route('audios.destroy',['id'=>$audio->id])}}">
                         {{ method_field('DELETE')}}
                         {{ csrf_field()}}
-                      
                       <button type="submit" class="btn btn-danger btn-block" onclick="return confirm('Delete this audio file ?')"><i class="fa fa-trash-o"></i> {{ trans('admin.delete') }}</button>
                       </form>
                     </div>

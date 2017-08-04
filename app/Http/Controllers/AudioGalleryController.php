@@ -42,7 +42,6 @@ class AudioGalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return \Illuminate\Http\Response
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */

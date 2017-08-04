@@ -56,7 +56,6 @@
                         <form method="POST" action="{{route('albums.destroy',['id'=>$current_album->id])}}">
                           {{ method_field('DELETE')}}
                           {{ csrf_field()}}
-                        
                         <button type="submit" class="bt-link" onclick="return confirm('Delete this album?')"><i class="fa fa-trash-o" ></i> {{ trans('admin.delete') }}</button>
                         </form>
                         </div>

@@ -183,6 +183,7 @@ class ImageGalleryController extends Controller
         $album = $image->album_id;
         //unlink('public/gallery/photo/'.$image->url);
         //unlink('public/gallery/photo/thumbnails/'.$image->url);
+  
         $image->delete();
         return redirect()->route('photos-albums',['id'=>$album]);
     }

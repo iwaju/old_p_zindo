@@ -47,8 +47,7 @@
               </div><!-- /.box-header -->
               <div class="box-body">
                 <div class="row">
-                  <div class="col-md-8">
-                    
+                  <div class="col-md-8">     
                     <div class="timeline-item">
                       <h3 class="timeline-header">{{ $video->title }}</h3>
                       <div class="timeline-body">
@@ -60,7 +59,6 @@
                       <p  class="well well-sm  text-center bold">{{ ucfirst($video->description) }}.</p>
                     </div>
                     </div>
-                    
                   </div>
                   <div class="col-md-2">
                     <div>
@@ -68,6 +66,7 @@
                         {{ method_field('DELETE')}}
                         {{ csrf_field()}}
                       
+
                       <button type="submit" class="btn btn-danger btn-block" onclick="return confirm('Delete this video ?')"><i class="fa fa-trash-o"></i> {{ trans('admin.delete') }}</button>
                       </form>
                     </div>

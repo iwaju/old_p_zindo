@@ -73,6 +73,7 @@ class VideoGalleryController extends Controller
         ]);
 
         return redirect()->route('videos.show',['id'=>$newVideo->id])->with('success', 'misc.upload_succes');
+
     }
 
     /**
@@ -148,5 +149,6 @@ class VideoGalleryController extends Controller
     public function missingMethod($parameters=[])
     {
         return Redirect::route('videos-album.index');
+
     }
 }

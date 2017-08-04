@@ -216,6 +216,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li><!-- ./Links -->
             
             <!-- Links -->
+            <li @if(Request::is('panel/admin/gallery/*')) class="active" @endif>
+              <a href="{{ url('panel/admin/gallery') }}"><i class="fa fa-object-group"></i> <span>{{ trans('admin.gallery') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+               <li @if(Request::is('panel/admin/gallery/photos*')) class="active" @endif><a href="{{ route('photos.index') }}"><i class="fa fa-picture-o"></i> {{ trans('admin.photo') }}</a></li>
+               <li @if(Request::is('panel/admin/gallery/audios*')) class="active" @endif><a href="{{ route('audios.index') }}"><i class="fa fa-music"></i> {{ trans('admin.audio') }}</a></li>
+               <li @if(Request::is('panel/admin/gallery/videos*')) class="active" @endif><a href="{{ route('videos.index') }}"><i class="fa fa-youtube-play"></i> {{ trans('admin.video') }}</a></li>
+             </ul>
+            </li><!-- ./Links -->
+            
+            <!-- Links -->
             <li @if(Request::is('panel/admin/withdrawals')) class="active" @endif>
             	<a href="{{ url('panel/admin/withdrawals') }}"><i class="fa fa-university"></i> <span>{{ trans('misc.withdrawals') }}</span></a>
             </li><!-- ./Links -->

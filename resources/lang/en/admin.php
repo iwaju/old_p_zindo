@@ -141,6 +141,7 @@ return array(
     'min_width_height_image'    =>      'Min width height image',
     
 	// Others
+
 	'min_campaign_amount'       => 'The minimum amount for Campaing',
 	'min_donation_amount'       => 'The minimum amount for Donations',
 	'password_no_change'        => 'Leave empty for no change',
@@ -153,9 +154,5 @@ return array(
 	'video'                     => 'Videos',
 	'create'                    => 'create',
 	'reset'                     => 'reset'
-
-    
-	
-	 
 	
 );
