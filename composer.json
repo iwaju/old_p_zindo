@@ -10,7 +10,10 @@
         "intervention/image": "^2.3",
 		"cviebrock/image-validator": "^2.0",
 		"laravelcollective/html": "5.3.*",
-		"laravel/cashier": "~7.0"
+		"laravel/cashier": "~7.0",
+        "devdojo/chatter": "0.2.*",
+        "riari/laravel-forum": "~4.0",
+        "riari/laravel-forum-frontend": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

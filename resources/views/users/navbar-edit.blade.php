@@ -34,4 +34,11 @@
 		  	</a> <!-- **** ./ list-group-item **** -->
 		  	</li>
 		  	
+		  	<li class="margin-bottom-5">
+		  		<!-- **** list-group-item **** -->	
+		  <a href="{{ url('account/project-project') }}" class="list-group-item @if(Request::is('account/project-project*'))active @endif"> 
+		  	<i class="fa fa-wpforms myicon-right"></i> {{ trans('misc.propose_project') }} 
+		  	</a> <!-- **** ./ list-group-item **** -->
+		  	</li>
+
 		</ul>

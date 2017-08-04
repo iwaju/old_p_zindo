@@ -14,7 +14,7 @@
  | Index
  |-----------------------------------
  */
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('homepage');
 
 Route::get('home', function(){
 	return redirect('/');
@@ -158,8 +158,22 @@ Route::group(['middleware' => 'auth'], function() {
 	return view('users.donations');
 	});
 	
+	// Propose project
+	Route::get('account/project-project', 'ProposedProjectsController@index')->name('proposed-project.new');
+
+	// Save the proposed project
+	Route::post('account/project-project', 'ProposedProjectsController@store')->name('proposed-project.store');
+
+	// edit the proposed project
+	Route::get('account/project-project/{id}', 'ProposedProjectsController@edit')->name('proposed-project.edit');
+
+	// edit the proposed project
+	Route::post('account/project-project/{id}', 'ProposedProjectsController@update')->name('proposed-project.update');
+
 	// Report Campaign
 	Route::get('report/campaign/{id}/{user}','CampaignsController@report');
+
+
 	
 });
 /* 
@@ -174,7 +188,7 @@ Route::group(['middleware' => 'role'], function() {
 	Route::get('update/{version}','UpgradeController@update');
 	
 	// Dashboard
-	Route::get('panel/admin','AdminController@admin');
+	Route::get('panel/admin','AdminController@admin')->name('dashboard');
 	
 	// Settings
 	Route::get('panel/admin/settings','AdminController@settings');
@@ -246,7 +260,94 @@ Route::group(['middleware' => 'role'], function() {
 	// Campaigns Reported
 	Route::get('panel/admin/campaigns/reported','AdminController@reportedCampaigns');
 	Route::post('panel/admin/campaigns/reported/delete','AdminController@reportedDeleteCampaigns');
-	
+
+	/**
+	 ** Proposed Projects
+	 **
+	 */
+
+	Route::group(['prefix'=>'panel/admin/proposed-projects'], function () {
+
+		Route::get('/','ProposedProjectsController@adminIndex')->name('proposed-projects-list');
+		Route::post('/','ProposedProjectsController@adminValidate')->name('proposed-projects-validate');
+		Route::get('/{id}','ProposedProjectsController@show')->name('proposed-projects-show');
+		Route::delete('/','ProposedProjectsController@destroy')->name('proposed-projects-del');
+
+	});
+
+	/**
+	 ** Media Gallery
+	 **
+	 */
+
+	Route::group(['prefix'=>'panel/admin/gallery'], function () {
+
+		
+		// Medias Album
+        
+		Route::resource('/albums','MediaAlbumController');
+
+		// Photos Gallery 
+
+		Route::get('/photos/album/{id}','ImageGalleryController@album')->name('photos-albums');
+		Route::resource('/photos','ImageGalleryController');
+
+		// Videos Gallery
+
+		Route::get('/videos/album/{id}','VideoGalleryController@album')->name('videos-albums');
+		Route::resource('/videos','VideoGalleryController');
+
+		// Audios Gallery
+
+		Route::get('/audios/album/{id}','AudioGalleryController@album')->name('audios-albums');
+		Route::resource('/audios','AudioGalleryController');
+	});
+
+	/**
+	 ** Front End Media Gallery
+	 **
+	 */
+
+	Route::group(['prefix'=>'gallery'], function () {
+
+		Route::get('/', function () { 
+
+			return view('gallery.index'); 
+		})->name('gallery-index');
+
+		Route::get('/videos', function () { 
+
+			return view('gallery.video.index'); 
+
+		})->name('front-video-gallery');
+
+		Route::get('/videos/{id}', function ($id) { 
+			$albums = App\Models\MediaAlbum::where('type','video')->get();
+  			$current_album = App\Models\MediaAlbum::where('id',$id)->firstOrFail();
+  			
+			return view('gallery.video.show',compact('albums','current_album')); 
+
+		})->name('video-show')->where('id', '[0-9]+');
+
+
+	});
+
+	/**
+	 **  Forum
+	 **
+	 */
+
+		Route::group(['prefix'=>'panel/admin/forum'], function () {
+
+			Route::get('/', function () { return view('admin.forum.index'); })->name('category-index');
+
+			Route::match(['get', 'post'], '/new', 'ForumController@createCategory')->name('forum-new');
+
+			Route::delete('/','ForumController@destroyCategory')->name('category-destroy');
+
+			Route::match(['get', 'post'], '/{id}','ForumController@updateCategory')->name('category-update')->where('id', '[0-9]+');
+		});
+
 });
 
 /* 

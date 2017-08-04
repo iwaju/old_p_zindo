@@ -50,6 +50,5 @@
 		@include('includes.javascript_general')
 	
 	@yield('javascript')
-	
 </body>
 </html>
