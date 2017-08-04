@@ -11,7 +11,9 @@
     <title>Laravel</title>
 
     <!-- Styles -->
-    <link href="/blog/public/css/app.css" rel="stylesheet">
+    <link href="{{ asset('public/css/app.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/vendor/devdojo/chatter/assets/vendor/spectrum/spectrum.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/vendor/devdojo/chatter/assets/css/chatter.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -35,7 +37,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    Laravel JOKI
                 </a>
             </div>
 
@@ -80,6 +82,49 @@
     @yield('content')
 
     <!-- Scripts -->
-    <script src="/blog/public/js/app.js"></script>
+    <script src="{{ asset('public/js/app.js')}}"></script>
+
+        <script src="{{ asset('public/vendor/devdojo/chatter/assets/js/chatter.js')}}"></script>
+        
+
+        <script src="{{ asset('public/vendor/devdojo/chatter/assets/vendor/tinymce/tinymce.min.js')}}"></script>
+        <script src="{{ asset('public/vendor/devdojo/chatter/assets/js/tinymce.js')}}"></script>
+        <script>
+            var my_tinymce = tinyMCE;
+            $('document').ready(function(){
+                $('#tinymce_placeholder').click(function(){
+                    my_tinymce.activeEditor.focus();
+                });
+            });
+        </script>
+
+    <script src="{{ asset('public/vendor/devdojo/chatter/assets/vendor/spectrum/spectrum.js')}}"></script>
+    <script src="{{ asset('public/vendor/devdojo/chatter/assets/js/chatter.js')}}"></script>
+    <script>
+        $('document').ready(function(){
+
+            $('.chatter-close').click(function(){
+                $('#new_discussion').slideUp();
+            });
+            $('#new_discussion_btn, #cancel_discussion').click(function(){
+                                $('#new_discussion').slideDown();
+                    $('#title').focus();
+                        });
+
+            $("#color").spectrum({
+                color: "#333639",
+                preferredFormat: "hex",
+                containerClassName: 'chatter-color-picker',
+                cancelText: '',
+                chooseText: 'close',
+                move: function(color) {
+                    $("#color").val(color.toHexString());
+                }
+            });
+
+            
+
+        });
+    </script>
 </body>
 </html>

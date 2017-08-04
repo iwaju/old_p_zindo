@@ -5,12 +5,12 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h4>
-            {{ trans('admin.admin') }} 
-              <i class="fa fa-angle-right margin-separator"></i> 
-                {{ trans('misc.photo_album') }}
-              <i class="fa fa-angle-right margin-separator"></i> 
-				{{ trans('misc.add_image') }}	
+          <h4 class="small">
+            <ol class="breadcrumb">
+              <li><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> {{ trans('admin.admin') }}</a></li>
+              <li class=""><a href="{{route('photos-albums', ['id'=>$album_id])}}">{{ trans('misc.photo_album') }}</a></li>
+              <li class="active">{{ trans('misc.add_image') }}  </li>
+            </ol>
           </h4>
         </section>
 
@@ -26,7 +26,7 @@
                   <div class="pull-right box-tools">
                     <ul class="gal-menu">
                       <li>
-                        <a href="{{route('photos-albums', ['id'=>$album_id])}}" class="btn btn-box-tool">
+                        <a href="{{route('photos-albums', ['id'=>$album_id])}}" class="btn bt-link">
                           <i class="fa fa-arrow-left"> </i>
                           {{ trans('misc.back_to_album') }}
                         </a>
@@ -88,7 +88,10 @@
                   </div><!-- /.box-body -->
                   
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-success">{{ trans('admin.save') }}</button>
+                    <div class="pull-right">
+                      <button type="submit" class="btn btn-success">{{ trans('admin.save') }}</button>
+                    </div>
+                    <button type="reset" class="btn btn-danger">{{ trans('admin.reset') }}</button>
                   </div><!-- /.box-footer -->
                 </form>
               </div>

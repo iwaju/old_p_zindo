@@ -5,16 +5,13 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h4>
-           <small>
-             {{ trans('admin.admin') }} 
-             <i class="fa fa-angle-right margin-separator"></i> 
-             {{ trans('misc.audio_album') }}
-             <i class="fa fa-angle-right margin-separator"></i>
-             <b>{{ $current_album->name }}</b>
-           </small>
+          <h4 class="small">
+            <ol class="breadcrumb">
+              <li><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> {{ trans('admin.admin') }}</a></li>
+              <li class=""><a href="{{route('audios.index')}}">{{ trans('misc.audio_album') }}</a></li>
+              <li class="active">{{ ucfirst($current_album->name) }}</li>
+            </ol>
           </h4>
-     
         </section>
 
         <!-- Main content -->
@@ -44,13 +41,16 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">
                     @if($current_album)
-                      {{ $current_album->name }}
+                      {{ ucfirst($current_album->name) }}
                     @else
                       {{ trans('misc.no_album') }}
                     @endif
                   </h3>
                   <div class="box-tools pull-right">
                     <ul class="gal-menu">
+                      <li>
+                         <a href="{{route('albums.edit', ['id'=>$current_album->id])}}" class="fa fa-pencil bt-link"> {{ trans('misc.edit_album')}}</a>
+                      </li>
                       <li>
                       <div class="div-bt-link">
                         <form method="POST" action="{{route('albums.destroy',['id'=>$current_album->id])}}">

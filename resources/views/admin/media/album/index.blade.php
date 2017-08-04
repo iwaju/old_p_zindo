@@ -5,14 +5,12 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h4>
-            <small>
-             {{ trans('admin.admin') }} 
-             <i class="fa fa-angle-right margin-separator"></i> 
-             {{ trans('misc.'.$media_type.'_album') }}
-            </small>
+          <h4 class="small">
+            <ol class="breadcrumb">
+              <li><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> {{ trans('admin.admin') }}</a></li>
+              <li class="active">{{ trans('misc.'.$media_type.'_album') }}</li>
+            </ol>
           </h4>
-     
         </section>
 
         <!-- Main content -->

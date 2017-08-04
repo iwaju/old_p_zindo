@@ -181,8 +181,9 @@ class ImageGalleryController extends Controller
         $album_name = MediaAlbum::find($image->album_id)->name;
         //dd($album_name);
         $album = $image->album_id;
-        unlink('public/gallery/photo/'.$image->url);
-        unlink('public/gallery/photo/thumbnails/'.$image->url);
+        //unlink('public/gallery/photo/'.$image->url);
+        //unlink('public/gallery/photo/thumbnails/'.$image->url);
+  
         $image->delete();
         return redirect()->route('photos-albums',['id'=>$album]);
     }

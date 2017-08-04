@@ -87,7 +87,9 @@
 }
 
 .thumb-info p {
-	text-align: left;
+	text-align: center;
+	padding-top: 2%;
+	margin-bottom: 5px;
 }
 
 .btn-del {
@@ -151,4 +153,88 @@
 
 .vid-info p {
 	text-align: left;
+}
+.breadcrumb {
+	margin-bottom: 0;
+}
+
+/* 
+ * Front End Gallery
+ */
+
+ .gallery-content {
+ 	background-color: #fff;
+ }
+
+ .gallery-content .box {
+     position: relative;
+     border-radius: 3px;
+     background: #ecf0f5;
+     border-top: 3px solid #d2d6de;
+     margin-bottom: 20px;
+     width: 100%;
+     box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+ }
+ .gallery-content .box.box-solid {
+     border-top: 0;
+ }
+ .gallery-content .box-header {
+    color: #444;
+    display: block;
+    padding: 10px;
+    position: relative;
+}
+.gallery-content .box-header.with-border {
+    border-bottom: 1px solid #d8d8d8;
+}
+.gallery-content .box-header>.fa, .gallery-content .box-header>.glyphicon, .box-header>.ion, .gallery-content .box-header .box-title {
+    display: inline-block;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1;
+}
+.gallery-content .box-header>.box-tools {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+
+.gallery-content .box.box-solid>.box-header>.box-tools .btn {
+    border: 0;
+    box-shadow: none;
+}
+
+.gallery-content .btn {
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid transparent;
+}
+
+.gallery-content .btn-box-tool {
+    padding: 5px;
+    font-size: 12px;
+    background: transparent;
+    color: #97a0b3;
+}
+.gallery-content .box-header:after, .gallery-content .box-body:after, .gallery-content .box-footer:after {
+    clear: both;
+}
+
+
+.gallery-content .box-header:before, .gallery-content .box-body:before, .gallery-content .box-footer:before, .gallery-content .box-header:after, .gallery-content .box-body:after, .gallery-content .box-footer:after {
+    content: " ";
+    display: table;
+}
+.gallery-content .nav-stacked>li>a {
+    border-radius: 0;
+    border-top: 0;
+    border-left: 3px solid transparent;
+    color: #444;
+}
+.gallery-content .nav>li>a:hover, .gallery-content .nav>li>a:active, .gallery-content .nav>li>a:focus {
+    color: #444;
+    background: #f7f7f7;
+
 }

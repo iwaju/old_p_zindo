@@ -5,16 +5,14 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h4>
-           <small>
-             {{ trans('admin.admin') }} 
-             <i class="fa fa-angle-right margin-separator"></i> 
-             {{ trans('misc.video_gallery') }}
-             <i class="fa fa-angle-right margin-separator"></i>
-             <b>{{ $album->name }}</b>
-           </small>
-          </h4>
-     
+        <h4 class="small">
+          <ol class="breadcrumb">
+            <li><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> {{ trans('admin.admin') }}</a></li>
+            <li><a href="{{route('videos.index')}}">{{ trans('misc.video_albums') }}</a></li>
+            <li><a href="{{route('videos-albums',['id'=>$album->id])}}">{{ ucfirst($album->name) }}</a></li>
+            <li class="active">{{ ucfirst($video->name) }}</li>
+          </ol>
+        </h4>
         </section>
 
         <!-- Main content -->
@@ -49,19 +47,18 @@
               </div><!-- /.box-header -->
               <div class="box-body">
                 <div class="row">
-                  <div class="col-md-8">
-                        <figure class="">
-                          <div  class="embed-responsive embed-responsive-4by3 bg-info">
-                            <video class="" poster="{{ asset('public/gallery/video/thumbnail/'.$video->thumbnail) }}" controls preload="none">
-                              <source src="{{ asset('public/gallery/video/'.$album->name.'/'.$video->url) }}" type="video/mp4">
-                                <img src="{{ asset('public/gallery/video/thumbnail/'.$video->thumbnail) }}" alt="">
-                                <p>Your browser can’t play this video, but you can download it:</p>
-                            </video>
-                          </div>
-                          <figcaption class="figure__caption"><br>
-                            <p class="well">{{ ucfirst($video->description) }}.</p>
-                          </figcaption>
-                        </figure>
+                  <div class="col-md-8">     
+                    <div class="timeline-item">
+                      <h3 class="timeline-header">{{ $video->title }}</h3>
+                      <div class="timeline-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                          <iframe class="embed-responsive-item" src="{{ $video->url }}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                      </div>
+                      <div class="timeline-footer">
+                      <p  class="well well-sm  text-center bold">{{ ucfirst($video->description) }}.</p>
+                    </div>
+                    </div>
                   </div>
                   <div class="col-md-2">
                     <div>
@@ -69,7 +66,8 @@
                         {{ method_field('DELETE')}}
                         {{ csrf_field()}}
                       
-                      <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-o"></i> {{ trans('admin.delete') }}</button>
+
+                      <button type="submit" class="btn btn-danger btn-block" onclick="return confirm('Delete this video ?')"><i class="fa fa-trash-o"></i> {{ trans('admin.delete') }}</button>
                       </form>
                     </div>
                   </div>

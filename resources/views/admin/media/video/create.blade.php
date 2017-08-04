@@ -5,13 +5,13 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h4><small>
-            {{ trans('admin.admin') }} 
-              <i class="fa fa-angle-right margin-separator"></i> 
-                {{ trans('misc.gallery') }}
-              <i class="fa fa-angle-right margin-separator"></i> 
-				    {{ trans('misc.video_gallery') }}	
-          </small></h4>
+          <h4 class="small">
+            <ol class="breadcrumb">
+              <li><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> {{ trans('admin.admin') }}</a></li>
+              <li class=""><a href="{{route('videos-albums', ['id'=>$album_id])}}">{{ trans('misc.video_album') }}</a></li>
+              <li class="active">{{ trans('misc.add_video') }}  </li>
+            </ol>
+          </h4>
         </section>
 
         <!-- Main content -->
@@ -81,33 +81,25 @@
                       </div>
                     </div>
                   </div><!-- /.box-body -->
+                  
                   <!-- Start Box Body -->
                   <div class="box-body">
                     <div class="form-group">
-                      <label class="col-sm-2 control-label">{{trans('misc.select_video')}}</label>
+                      <label class="col-sm-2 control-label">{{trans('misc.enter_video_url')}}</label>
                       <div class="col-sm-10">
-                        <div class="btn btn-info box-file">
-                          <input type="file" accept="video/*" name="video" required/>
-                          <i class="glyphicon glyphicon-film myicon-right"></i> {{ trans('misc.upload') }}
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-youtube-play"></i></span>
+                          <input type="text" name="video" class="form-control" value="{{ old('video') }}" placeholder="Video url"/>
                         </div>
                       </div>
                     </div>
-                  </div><!-- /.box-body -->
-                  <!-- Start Box Body -->
-                  <div class="box-body">
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">{{trans('misc.select_thumbnail')}}</label>
-                      <div class="col-sm-10">
-                        <div class="btn btn-info box-file">
-                          <input type="file" accept="image/*" name="thumbnail" required/>
-                          <i class="glyphicon glyphicon-picture myicon-right"></i> {{ trans('misc.upload') }}
-                        </div>
-                      </div>
-                    </div>
-                  </div><!-- /.box-body -->
+                  </div>
                   
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-success">{{ trans('admin.save') }}</button>
+                    <div class="pull-right">
+                      <button type="submit" class="btn btn-success">{{ trans('admin.create') }}</button>
+                    </div>
+                    <button type="reset" class="btn btn-danger">{{ trans('admin.reset') }}</button>
                   </div><!-- /.box-footer -->
                 </form>
               </div>

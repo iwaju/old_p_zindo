@@ -93,7 +93,10 @@ class MediaAlbumController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = MediaAlbum::findOrFail($id);
+        $media_type = $data->type;
+        
+        return view('admin.media.album.edit', compact('data','media_type'));
     }
 
     /**
@@ -105,7 +108,24 @@ class MediaAlbumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->All(), [
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $album = MediaAlbum::find($id);
+        $album->name = $request->name;
+        $album->description = $request->description;
+        $album->save();
+
+        $currentAlbumRoute = $album->type.'s-albums';
+        //dd($currentAlbumRoute);
+
+        return redirect()->route($currentAlbumRoute, ['id'=>$album->id]);
     }
 
     /**

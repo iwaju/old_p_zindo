@@ -74,23 +74,29 @@
         				<a class="link-footer" href="{{ url('login') }}">
         					{{ trans('auth.login') }}
         				</a>
-        				</li>
+        			</li>
 
         				
-        				@else
-        				<li>
-	          		 		<a href="{{ url('account') }}" class="link-footer">
-	          		 			{{ trans('users.account_settings') }}
-	          		 		</a>
-	          		 		</li>
-	          		 		
-	          		 		<li>
-	          		 			<a href="{{ url('logout') }}" class="logout link-footer">
-	          		 				{{ trans('users.logout') }}
-	          		 			</a>
-	          		 		</li>
-        				@endif
-        				
+    				@else
+    				<li>
+          		 		<a href="{{ url('account') }}" class="link-footer">
+          		 			{{ trans('users.account_settings') }}
+          		 		</a>
+          		 		</li>
+          		 		
+          		 		<li>
+          		 			<a href="{{ url('logout') }}" class="logout link-footer">
+          		 				{{ trans('users.logout') }}
+          		 			</a>
+          		 		</li>
+    				@endif
+
+        			<li>
+                        <a class="link-footer" href="{{ route('gallery-index') }}">{{ trans('misc.media_gallery') }}</a>
+                    </li>
+                    <li>
+                        <a class="link-footer" href="{{ route('chatter.home') }}">{{ trans('misc.forum') }}</a>
+                    </li>
     				</ul>
     			</div><!-- ./End col-md-* -->
     		</div><!-- ./End Row -->

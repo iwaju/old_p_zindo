@@ -5,12 +5,12 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h4>
-            {{ trans('admin.admin') }} 
-              <i class="fa fa-angle-right margin-separator"></i> 
-                {{ trans('misc.audio_album') }}
-              <i class="fa fa-angle-right margin-separator"></i> 
-				{{ trans('misc.add_audio') }}	
+          <h4 class="small">
+            <ol class="breadcrumb">
+              <li><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> {{ trans('admin.admin') }}</a></li>
+              <li class=""><a href="{{ route('audios.index') }}">{{ trans('misc.audio_album') }}</a></li>
+              <li class="active">{{ trans('misc.add_audio') }}</li>
+            </ol>
           </h4>
         </section>
 
@@ -21,7 +21,7 @@
             <div class="row">
           		<div class="box box-danger">
                 <div class="box-header with-border">
-                  <h3 class="box-title">{{ trans('misc.new_photo_album') }}</h3>
+                  <h3 class="box-title">{{ trans('misc.new_audio_album') }}</h3>
 
                   <div class="pull-right box-tools">
                     <ul class="gal-menu">

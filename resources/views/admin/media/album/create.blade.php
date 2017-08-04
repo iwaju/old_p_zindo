@@ -1,20 +1,16 @@
 @extends('admin.layout')
 
-
-
 @section('content')
 <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h4>
-            <small>
-              {{ trans('admin.admin') }} 
-              <i class="fa fa-angle-right margin-separator"></i> 
-              {{ trans('misc.create_photo_album') }}
-            </small>
+          <h4 class="small">
+            <ol class="breadcrumb">
+              <li><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> {{ trans('admin.admin') }}</a></li>
+              <li class="active">{{ trans('misc.create_'.$media_type.'_album') }}</li>
+            </ol>
           </h4>
-
         </section>
 
         <!-- Main content -->
@@ -26,7 +22,17 @@
     
           <div class="box box-danger">
                 <div class="box-header with-border">
-                  <h3 class="box-title">{{ trans('misc.new_photo_album') }}</h3>
+                  <h3 class="box-title">{{ trans('misc.new_'.$media_type.'_album') }}</h3>
+                  <div class="pull-right box-tools">
+                    <ul class="gal-menu">
+                      <li>
+                        <a href="{{route($media_type.'s.index')}}" class="btn btn-box-tool">
+                          <i class="fa fa-arrow-left"> </i>
+                          {{ trans('misc.back_to_album') }}
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div><!-- /.box-header -->
                
                
@@ -43,7 +49,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">{{ trans('admin.name') }}</label>
                       <div class="col-sm-10">
-                        <input type="text" value="{{ old('name') }}" name="name" class="form-control" placeholder="{{ trans('admin.name') }}">
+                        <input type="text" value="{{ old('name') }}" name="name" class="form-control" placeholder="{{ trans('admin.name') }}" required>
                       </div>
                     </div>
                   </div><!-- /.box-body -->
@@ -53,13 +59,17 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">{{ trans('admin.description') }}</label>
                       <div class="col-sm-10">
-                        <input type="text" value="{{ old('slug') }}" name="description" class="form-control" placeholder="{{ trans('admin.description') }}">
+                        <textarea value="{{ old('description') }}" name="description" class="form-control" placeholder="{{ trans('admin.description') }}"></textarea>
+
                       </div>
                     </div>
 
                   </div><!-- /.box-body -->
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-success">{{ trans('admin.save') }}</button>
+                    <div class="pull-right">
+                      <button type="submit" class="btn btn-success">{{ trans('admin.create') }}</button>
+                    </div>
+                    <button type="reset" class="btn btn-default">{{ trans('admin.reset') }}</button>
                   </div><!-- /.box-footer -->
                 </form>
               </div>

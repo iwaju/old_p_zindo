@@ -52,8 +52,9 @@ class VideoGalleryController extends Controller
     {
 
         $rules = [
+          'title' => 'required|unique:videos_gallery,title',
           'album' => 'required|numeric|exists:media_albums,id',
-          'video'=>'required|file'
+          'video'=>'required|url|unique:videos_gallery,url'
         ];
 
         $album_id = $request->get('album');
@@ -64,41 +65,15 @@ class VideoGalleryController extends Controller
             return redirect()->route('videos.create', ['id' => $album_id])->withErrors($validator)->withInput();
         }
 
-        $album_name = MediaAlbum::find($album_id)->name;
-        $vid = $request->file('video');
-        $thumb = $request->file('thumbnail');
-
-        $random_name = str_random(8);
-
-        $vidDestPath = 'public/gallery/video/'.$album_name;
-        //$thumbDestPath = 'public/gallery/video/thumbnail';
-
-        $vidExtension = $vid->getClientOriginalExtension();
-        //$thumbExtension = $thumb->getClientOriginalExtension();
-
-        $vidname=$random_name.'_'.$album_name.'.'.$vidExtension;
-        //$thumbname=$random_name.'_'.$album_name.'.'.$thumbExtension;
-        
-        $vidStatus = $request->file('video')->move($vidDestPath, $vidname);
-        if($vidStatus){
-            $thumbname = $this->resizer($thumb);
-        }
-        if(null != $thumbname){
         $newVideo = VideoGallery::create([
           'album_id'=> $request->get('album'),
           'title' => $request->get('title'),
           'description' => $request->get('description'),
-          'url' => $vidname,
-          'thumbnail' => $thumbname,
-          
+          'url' => $request->get('video'),
         ]);
-
 
         return redirect()->route('videos.show',['id'=>$newVideo->id])->with('success', 'misc.upload_succes');
 
-        }
-
-        return redirect()->route('videos.create', ['id' => $album_id])->withInput()->with('errors', 'misc.upload_failed');  
     }
 
     /**
@@ -171,72 +146,9 @@ class VideoGalleryController extends Controller
         return redirect()->route('videos-albums',['id'=>$album]);
     }
 
-    /**
-     * Resize uploaded image.
-     *
-     
-     * @return \Illuminate\Http\Response
-     */
-    public function resizer($file)
+    public function missingMethod($parameters=[])
     {
-            // PATHS
-            $temp            = 'public/temp/';
-            $path_small    = 'public/gallery/video/thumbnail/' ;
-            $path_large   = 'public/gallery/video/thumbnail/x';
-           
-            
-            if( \File::isFile($file) )  {
-                
-                $extension    = $file->getClientOriginalExtension();
-                $file_large     = strtolower(Auth::user()->id.time().str_random(40).'.'.$extension);
-                $file_small     = strtolower(Auth::user()->id.time().str_random(40).'.'.$extension);
-                
-                if( $file->move($temp, $file_large) ) {
-                    
-                    set_time_limit(0);
-                    
-                    //=============== Image Large =================//
-                    $width  = Helper::getWidth( $temp.$file_large );
-                    $height = Helper::getHeight( $temp.$file_large );
-                    $max_width = '800';
-                    
-                    if( $width < $height ) {
-                        $max_width = '400';
-                    }
-                    
-                    if ( $width > $max_width ) {
-                        $scale = $max_width / $width;
-                        $uploaded = Helper::resizeImage( $temp.$file_large, $width, $height, $scale, $temp.$file_large );
-                    } else {
-                        $scale = 1;
-                        $uploaded = Helper::resizeImage( $temp.$file_large, $width, $height, $scale, $temp.$file_large );
-                    }
-                    
-                    //=============== Small Large =================//
-                    Helper::resizeImageFixed( $temp.$file_large, 400, 300, $temp.$file_small );
-                                    
-                    //======= Copy Folder Small and Delete...
-                    if ( \File::exists($temp.$file_small) ) {
-                        \File::copy($temp.$file_small, $path_small.$file_small);
-                        \File::delete($temp.$file_small);
-                    }//<--- IF FILE EXISTS
-                    
-                    Image::make($temp.$file_large)->orientate();
-                    
-                    //======= Copy Folder Large and Delete...
-                    if ( \File::exists($temp.$file_large) ) {
-                        \File::copy($temp.$file_large, $path_large.$file_large);
-                        \File::delete($temp.$file_large);
-                    }//<--- IF FILE EXISTS
+        return Redirect::route('videos-album.index');
 
-                    $image_small  = $file_small;
-                    $image_large  = $file_large; 
-
-                    return $image_small;
-                    
-                }
-
-            }    
-            return null;
     }
 }
